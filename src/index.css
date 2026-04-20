@@ -1,0 +1,37 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@theme {
+  --color-background: #060c0c;
+  --color-foreground: #ffffff;
+  --color-primary: #00f2ea;
+  --color-primary-foreground: #000000;
+  --color-card: rgba(255, 255, 255, 0.08);
+  --color-card-foreground: #ffffff;
+  --color-border: rgba(255, 255, 255, 0.15);
+  --color-muted: rgba(255, 255, 255, 0.1);
+  --color-muted-foreground: rgba(255, 255, 255, 0.6);
+  --color-accent: rgba(0, 242, 234, 0.1);
+  --color-accent-foreground: #00f2ea;
+}
+
+@layer base {
+  body {
+    background: radial-gradient(circle at 10% 20%, #0c1a1a 0%, #060c0c 100%);
+    color: white;
+    min-height: 100vh;
+  }
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.glass-dark {
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}

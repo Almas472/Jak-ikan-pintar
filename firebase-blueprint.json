@@ -1,0 +1,49 @@
+{
+  "entities": {
+    "Pond": {
+      "title": "Pond",
+      "description": "Informasi status kolam lele",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "type": { "type": "string", "enum": ["biofloc", "non-biofloc"] },
+        "fishCount": { "type": "integer" },
+        "fishAge": { "type": "integer" },
+        "temperature": { "type": "number" },
+        "ph": { "type": "number" },
+        "feedLevel": { "type": "number" },
+        "battery": { "type": "number" },
+        "lastFeeding": { "type": "string" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["name", "type", "fishCount"]
+    },
+    "Schedule": {
+      "title": "Schedule",
+      "description": "Jadwal feeding otomatis",
+      "type": "object",
+      "properties": {
+        "time": { "type": "string" },
+        "amount": { "type": "integer" },
+        "enabled": { "type": "boolean" }
+      },
+      "required": ["time", "amount", "enabled"]
+    },
+    "FeedingLog": {
+      "title": "Feeding Log",
+      "description": "Riwayat pemberian pakan",
+      "type": "object",
+      "properties": {
+        "pondId": { "type": "string" },
+        "timestamp": { "type": "string", "format": "date-time" },
+        "amount": { "type": "integer" },
+        "status": { "type": "string", "enum": ["success", "failed"] }
+      }
+    }
+  },
+  "firestore": {
+    "/ponds/{pondId}": { "schema": "Pond", "description": "Koleksi utama kolam" },
+    "/ponds/{pondId}/schedules/{scheduleId}": { "schema": "Schedule", "description": "Jadwal pakan kolam" },
+    "/feeding_logs/{logId}": { "schema": "FeedingLog", "description": "Seluruh riwayat pakan" }
+  }
+}
